@@ -12,13 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import tensorflow as tf
 import webapp2
 
-
+# Simple hello world using TensorFlow
 class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Hello, World!')
+        self.response.write(hello = tf.constant('Hello, TensorFlow!'))
+		# Start tf session
+		sess = tf.Session()
+		
+		# Run the op
+		print(sess.run(hello))  
 
 
 app = webapp2.WSGIApplication([
